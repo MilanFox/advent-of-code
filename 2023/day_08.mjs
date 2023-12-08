@@ -7,13 +7,10 @@ mapping = mapping.split("\n").filter(Boolean).reduce((acc, curLine) => {
 }, {});
 
 const calculateSteps = (start, target) => {
-  let i = 0;
   const loop = {counter: 0, next: start};
-  while (true) {
+  for (let i = 0; !loop.next.endsWith(target); i = (i + 1) % instructions.length) {
     loop.counter++;
     loop.next = mapping[loop.next][instructions[i]];
-    i = (i + 1) % instructions.length
-    if (loop.next.endsWith(target)) break;
   }
   return loop.counter;
 }
