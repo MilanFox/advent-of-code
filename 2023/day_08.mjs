@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-let [instructions, mapping] = fs.readFileSync('input.txt', 'utf-8').split("\n\n").filter(Boolean)
+let [instructions, mapping] = fs.readFileSync('input.txt', 'utf-8').split("\n\n").filter(Boolean);
 mapping = mapping.split("\n").filter(Boolean).reduce((acc, curLine) => {
   const [dest, L, R] = curLine.match(/[A-Z0-9]{3}/g);
   return dest ? { ...acc, [dest]: { L, R } } : acc;
@@ -15,7 +15,7 @@ const calculateSteps = (start, target) => {
   return loop.counter;
 }
 
-console.log(`Part 1: ${calculateSteps("AAA", "ZZZ")}`)
+console.log(`Part 1: ${calculateSteps("AAA", "ZZZ")}`);
 
 const allNeededSteps = Object.keys(mapping).filter(key => key.endsWith("A")).map(start => calculateSteps(start, "Z"));
 
@@ -26,4 +26,4 @@ const getLCM = (...arr) => {
   return [...arr].reduce((a, b) => getLeastCommonMultiple(a, b));
 };
 
-console.log(`Part 2: ${ getLCM(...allNeededSteps)}`)
+console.log(`Part 2: ${ getLCM(...allNeededSteps)}`);
