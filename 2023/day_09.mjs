@@ -18,18 +18,14 @@ const breakDownSequence = (seq) => {
 
 const continueSequence = (seq, direction) => {
   const structure = breakDownSequence(seq).toReversed();
+  const position = { next: -1, prev: 0 };
   const _continue = {
     next: (element, i) => {structure[i+1] = [...structure, element.at(-1) + structure[i + 1].at(-1)]},
     prev: (element, i) => {structure[i+1] = [structure[i+1].at(0) - element.at(0) , ...structure[i+1]]}
   }
-
-  const position = { next: -1, prev: 0 };
-
-  structure.forEach((element, i) => {
-    if(i === structure.length - 1) return;
-    _continue[direction](element, i);
-  })
-
+  for (let i = 0; i < structure.length - 1; i++) {
+    _continue[direction](structure[i], i);
+  }
   return structure.at(-1).at(position[direction]);
 }
 
