@@ -2,13 +2,11 @@ import fs from 'fs';
 
 const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boolean).map(line => line.split(''));
 
-const oppositeDirection = {north: 'south', south: 'north', west: 'east', east: 'west'};
-
-const moveInstructions = {
-  'north': {offsetX: 0, offsetY: -1},
-  'east': {offsetX: 1, offsetY: 0},
-  'south': {offsetX: 0, offsetY: 1},
-  'west': {offsetX: -1, offsetY: 0}
+const directions = {
+  'north': { opposite: "south", offsetX: 0, offsetY: -1},
+  'east': { opposite: "west", offsetX: 1, offsetY: 0},
+  'south': { opposite: "north", offsetX: 0, offsetY: 1},
+  'west': { opposite: "east", offsetX: -1, offsetY: 0}
 };
 
 const pipes = {
@@ -31,16 +29,16 @@ while (true) {
   if (char === 'S' && nodes.length > 1) break;
 
   for (let i = 0; i < pipes[char].connectsTo.length; i++) {
-    const direction = pipes[char].connectsTo[i];
-    const { offsetX, offsetY } = moveInstructions[direction];
+    const searchDirection = pipes[char].connectsTo[i];
+    const { offsetX, offsetY } = directions[searchDirection];
     const nextChar = inputData[y + offsetY][x + offsetX];
 
-    if (direction === lastVisited) continue;
+    if (searchDirection === lastVisited) continue;
     if (!Object.keys(pipes).includes(nextChar)) continue;
-    if (!pipes[nextChar].connectsTo.includes(oppositeDirection[direction])) continue;
+    if (!pipes[nextChar].connectsTo.includes(directions[searchDirection].opposite)) continue;
 
     nodes.push({ char: nextChar, x: x + offsetX, y: y + offsetY })
-    lastVisited = oppositeDirection[direction];
+    lastVisited = directions[searchDirection].opposite;
 
     break;
   }
