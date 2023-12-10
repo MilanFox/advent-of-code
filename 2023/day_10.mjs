@@ -19,14 +19,14 @@ const pipes = {
   'F': {connectsTo: ['east', 'south']}
 };
 
-const y = inputData.findIndex(line => line.includes('S'));
-const x = inputData[y].findIndex(char => char === 'S');
-const nodes = [{char: 'S', x, y}];
+const startY = inputData.findIndex(line => line.includes('S'));
+const startX = inputData[startY].findIndex(char => char === 'S');
+const nodes = [];
 let lastVisited = undefined;
 
 while (true) {
-  const {char, x, y} = nodes.at(-1);
-  if (char === 'S' && nodes.length > 1) break;
+  const {char, x, y} = nodes.at(-1) || {char: "S", x: startX, y: startY};
+  if (char === 'S' && nodes.length) break;
 
   for (let i = 0; i < pipes[char].connectsTo.length; i++) {
     const searchDirection = pipes[char].connectsTo[i];
@@ -44,10 +44,9 @@ while (true) {
   }
 }
 
-nodes.pop() /* Delete duplicate "S" from Pathfinding. */
 console.log(`Part 1: ${nodes.length / 2}`);
 
-/* Visualize the loop, until I find out what to do with part 2... best seen in browser */
+/* Visualize the loop, until I find out what to do with part 2... because why not. */
 const visualizationData = Array.from({ length: 140 }, () => Array(140).fill(" "));
 const speakingCharacters = {'S': '★', '|': '│', '-': "─", 'L': "╰", 'J': "╯", '7': "╮", 'F': "╭"};
 nodes.forEach(({ char, y, x }) => visualizationData[y][x] = speakingCharacters[char]);
@@ -55,8 +54,8 @@ const generateVisualisation = (data) => data.map(line => line.join('')).join('\n
 fs.writeFileSync("visualization.txt", generateVisualisation(visualizationData), { flag: "w+" });
 
 /* Part 2 */
-const inflateMatrix = (matrix) => {
-  const inflationMap = {
+const upscaleMatrix = (matrix) => {
+  const upscaleMap = {
     " ": [[" ", " ", " "], [" ", "╳", " "], [" ", " ", " "]],
     "★": [["╭", "─", "╮"], ["│", "★", "│"], ["╰", "─", "╯"]],
     '│': [[" ", "│", " "], [" ", "│", " "], [" ", "│", " "]],
@@ -67,18 +66,18 @@ const inflateMatrix = (matrix) => {
     "╭": [[" ", " ", " "], [" ", "╭", "─"], [" ", "│", " "]],
   }
 
-  const inflatedMatrix = Array.from({ length: matrix.length * 3 }, () => Array(matrix[0].length * 3).fill("."));
+  const upscaledMatrix = Array.from({ length: matrix.length * 3 }, () => Array(matrix[0].length * 3).fill("."));
   matrix.forEach((row, indexY) => {
     row.forEach((cell, indexX) => {
       for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-          inflatedMatrix[(indexY * 3) + i][(indexX * 3) + j] = inflationMap[cell][i][j];
+          upscaledMatrix[(indexY * 3) + i][(indexX * 3) + j] = upscaleMap[cell][i][j];
         }
       }
     })
   })
 
-  return inflatedMatrix;
+  return upscaledMatrix;
 }
 
 /* Memory-safe recursive logic is a variation of the one described here: https://codeguppy.com/blog/flood-fill/index.html */
@@ -89,19 +88,20 @@ const floodFill = (matrix, posY, posX) => {
     const [posY, posX] = fillStack.pop();
     if (!matrix[posY]) continue;
     if (matrix[posY][posX] !== " " && matrix[posY][posX] !== "╳" ) continue;
-    matrix[posY][posX] = ` `; // Overwriting " " with "&nbsp;", so we don't run into infinite loops
+    // Overwriting " " with "&nbsp;", so we don't run into infinite loops while still looking like a space in the render
+    matrix[posY][posX] = ' ';
     for (const direction in directions) {
       fillStack.push([posY + directions[direction].offsetY, posX + directions[direction].offsetX])
     }
   }
 }
 
-const inflatedMatrix = inflateMatrix(visualizationData);
-floodFill(inflatedMatrix, 0 , 0);
+const upscaledMatrix = upscaleMatrix(visualizationData);
+floodFill(upscaledMatrix, 0 , 0);
+const charactersInLoop = upscaledMatrix.reduce((acc, row) => acc + row.filter(cell => cell === "╳").length, 0);
 
-const enclosedWhitespaces = inflatedMatrix.reduce((acc, row) => acc + row.filter(cell => cell === "╳").length, 0);
-console.log(`Part 2: ${enclosedWhitespaces}`);
+console.log(`Part 2: ${charactersInLoop}`);
 
 /* Visualizing the second part too, because why not - need to zoom out to see it properly.
    Also best seen in browser, since it displays &nbsp; as space character  */
- fs.writeFileSync("visualization2.txt", generateVisualisation(inflatedMatrix), { flag: "w+" });
+fs.writeFileSync("visualization2.txt", generateVisualisation(upscaledMatrix), { flag: "w+" });
