@@ -88,7 +88,7 @@ const floodFill = (matrix, posY, posX) => {
     const [posY, posX] = fillStack.pop();
     if (!matrix[posY]) continue;
     if (matrix[posY][posX] !== ' ' && matrix[posY][posX] !== '╳' ) continue;
-    // Overwriting ' ' with '&nbsp;', so we don't run into infinite loops while still looking like a space in the render
+                        // ↓ Overwriting ' ' with '&nbsp;', so we don't run into infinite loops while still looking like a space in the render.
     matrix[posY][posX] = ' ';
     for (const direction in directions) {
       fillStack.push([posY + directions[direction].offsetY, posX + directions[direction].offsetX])
