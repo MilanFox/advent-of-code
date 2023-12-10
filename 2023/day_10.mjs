@@ -57,7 +57,7 @@ fs.writeFileSync("visualization.txt", generateVisualisation(visualizationData), 
 /* Part 2 */
 const inflateMatrix = (matrix) => {
   const inflationMap = {
-    " ": [[" ", " ", " "], [" ", "⊗", " "], [" ", " ", " "]],
+    " ": [[" ", " ", " "], [" ", "╳", " "], [" ", " ", " "]],
     "★": [["╭", "─", "╮"], ["│", "★", "│"], ["╰", "─", "╯"]],
     '│': [[" ", "│", " "], [" ", "│", " "], [" ", "│", " "]],
     "─": [[" ", " ", " "], ["─", "─", "─"], [" ", " ", " "]],
@@ -88,7 +88,7 @@ const floodFill = (matrix, posY, posX) => {
   while(fillStack.length > 0) {
     const [posY, posX] = fillStack.pop();
     if (!matrix[posY]) continue;
-    if (matrix[posY][posX] !== " " && matrix[posY][posX] !== "⊗" ) continue;
+    if (matrix[posY][posX] !== " " && matrix[posY][posX] !== "╳" ) continue;
     matrix[posY][posX] = ` `; // Overwriting " " with "&nbsp;", so we don't run into infinite loops
     for (const direction in directions) {
       fillStack.push([posY + directions[direction].offsetY, posX + directions[direction].offsetX])
@@ -99,7 +99,7 @@ const floodFill = (matrix, posY, posX) => {
 const inflatedMatrix = inflateMatrix(visualizationData);
 floodFill(inflatedMatrix, 0 , 0);
 
-const enclosedWhitespaces = inflatedMatrix.reduce((acc, row) => acc + row.filter(cell => cell === "⊗").length, 0);
+const enclosedWhitespaces = inflatedMatrix.reduce((acc, row) => acc + row.filter(cell => cell === "╳").length, 0);
 console.log(`Part 2: ${enclosedWhitespaces}`);
 
 /* Visualizing the second part too, because why not - need to zoom out to see it properly.
