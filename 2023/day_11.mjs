@@ -26,7 +26,7 @@ const generatePairings = (galaxies) => {
       const crossesEmptyRows = emptyRows.filter(row => row > minY && row < maxY).length;
       const crossesEmptyColumns = emptyColumns.filter(col => col > minX && col < maxX).length;
 
-      pairings.push([galaxies[i], galaxies[j], {crossesEmptyRows, crossesEmptyColumns}])
+      pairings.push([galaxies[i], galaxies[j], crossesEmptyRows + crossesEmptyColumns])
     }
   }
   return pairings;
@@ -35,12 +35,11 @@ const generatePairings = (galaxies) => {
 const allPairings = generatePairings(allGalaxies);
 
 const sumOfDistances = (pairings, multiplier) => pairings
-  .map(([{x: x1, y: y1}, {x: x2, y: y2}, {crossesEmptyRows, crossesEmptyColumns}]) => (
+  .map(([{x: x1, y: y1}, {x: x2, y: y2}, emptySpaceCrossings]) => (
     Math.abs(x2 - x1)
     + Math.abs(y2 - y1)
-    + (crossesEmptyRows * (multiplier - 1))
-    + (crossesEmptyColumns * (multiplier - 1)))
-  )
+    + (emptySpaceCrossings * (multiplier - 1))
+  ))
   .reduce((acc, cur) => (acc || 0) + cur);
 
 console.log(`Part 1: ${sumOfDistances(allPairings, 2)}`);
