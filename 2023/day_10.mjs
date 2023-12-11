@@ -47,7 +47,7 @@ while (true) {
 console.log(`Part 1: ${nodes.length / 2}`);
 
 /* Visualize the loop, until I find out what to do with part 2... because why not. */
-const visualizationData = Array.from({ length: 140 }, () => Array(140).fill(' '));
+const visualizationData = Array.from({ length: inputData.length }, () => Array(inputData[0].length).fill(' '));
 const speakingCharacters = {'S': '★', '|': '│', '-': '─', 'L': '╰', 'J': '╯', '7': '╮', 'F': '╭'};
 nodes.forEach(({ char, y, x }) => visualizationData[y][x] = speakingCharacters[char]);
 const generateVisualisation = (data) => data.map(line => line.join('')).join('\n');
