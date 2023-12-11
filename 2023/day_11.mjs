@@ -16,9 +16,7 @@ const generatePairings = (galaxies) => {
   const pairings = [];
   const numberOfGalaxies = galaxies.length;
   for (let i = 0; i < numberOfGalaxies; i++) {
-    for (let j = i; j < numberOfGalaxies; j++) {
-      if (i === j) continue;
-
+    for (let j = i + 1; j < numberOfGalaxies; j++) {
       const minY = Math.min(galaxies[i].y, galaxies[j].y);
       const maxY = Math.max(galaxies[i].y, galaxies[j].y);
       const minX = Math.min(galaxies[i].x, galaxies[j].x);
