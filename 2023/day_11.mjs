@@ -4,17 +4,16 @@ const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boole
 const galaxy = "#";
 
 const emptyColumns = Array
-  .from({ length: inputData[0].length }, (_, x) => x)
+  .from({length: inputData[0].length}, (_, x) => x)
   .filter(x => !inputData.some(row => row[x] === galaxy));
 
 const emptyRows = inputData
   .reduce((acc, cur, index) => !cur.some(cell => cell === galaxy) ? [...acc, index] : acc, []);
 
-const allGalaxies = inputData
-  .flatMap((line, posY) => line
-    .flatMap((cell, posX) => (cell === galaxy) ? [{y: posY, x: posX}] : []));
+const allGalaxies = inputData.flatMap((line, posY) => line
+  .flatMap((cell, posX) => (cell === galaxy) ? [{y: posY, x: posX}] : []));
 
-const generatePairings = ( galaxies ) => {
+const generatePairings = (galaxies) => {
   const pairings = [];
   const numberOfGalaxies = galaxies.length;
   for (let i = 0; i < numberOfGalaxies; i++) {
@@ -34,11 +33,13 @@ const generatePairings = ( galaxies ) => {
   return pairings;
 }
 
-const allPairings =  generatePairings(allGalaxies);
+const allPairings = generatePairings(allGalaxies);
+
 const sumOfDistances = (pairings, multiplier) => pairings
-  .map(([ {x: x1, y: y1}, {x: x2, y: y2}, { crossesEmptyRows, crossesEmptyColumns } ]) =>
-    Math.abs(x2 - x1) + Math.abs(y2 - y1) + (crossesEmptyRows * (multiplier - 1)) + (crossesEmptyColumns * (multiplier - 1))
-  )
+  .map(([{x: x1, y: y1}, {x: x2, y: y2}, {
+    crossesEmptyRows,
+    crossesEmptyColumns
+  }]) => Math.abs(x2 - x1) + Math.abs(y2 - y1) + (crossesEmptyRows * (multiplier - 1)) + (crossesEmptyColumns * (multiplier - 1)))
   .reduce((acc, cur) => (acc || 0) + cur);
 
 console.log(`Part 1: ${sumOfDistances(allPairings, 2)}`);
