@@ -36,7 +36,7 @@ const allPairings = generatePairings(allGalaxies);
 
 const sumOfDistances = (pairings, multiplier) => pairings
   .map(([{x: x1, y: y1}, {x: x2, y: y2}, emptySpaceCrossings]) => (
-    Math.abs(x2 - x1)
+      Math.abs(x2 - x1)
     + Math.abs(y2 - y1)
     + (emptySpaceCrossings * (multiplier - 1))
   ))
