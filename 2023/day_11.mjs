@@ -10,8 +10,7 @@ const emptyColumns = Array
 const emptyRows = inputData
   .reduce((acc, cur, index) => !cur.some(cell => cell === galaxy) ? [...acc, index] : acc, []);
 
-const allGalaxies = inputData.flatMap((line, y) => line
-  .flatMap((cell, x) => (cell === galaxy) ? [{y, x}] : []));
+const allGalaxies = inputData.flatMap((line, y) => line.flatMap((cell, x) => (cell === galaxy) ? [{y, x}] : []));
 
 const generatePairings = (galaxies) => {
   const pairings = [];
