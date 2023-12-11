@@ -36,11 +36,9 @@ const generatePairings = (galaxies) => {
 const allPairings = generatePairings(allGalaxies);
 
 const sumOfDistances = (pairings, multiplier) => pairings
-  .map(([{x: x1, y: y1}, {x: x2, y: y2}, {
-    crossesEmptyRows,
-    crossesEmptyColumns
-  }]) => Math.abs(x2 - x1) + Math.abs(y2 - y1) + (crossesEmptyRows * (multiplier - 1)) + (crossesEmptyColumns * (multiplier - 1)))
-  .reduce((acc, cur) => (acc || 0) + cur);
+  .map(([{x: x1, y: y1}, {x: x2, y: y2}, {crossesEmptyRows, crossesEmptyColumns}]) => (
+    Math.abs(x2 - x1) + Math.abs(y2 - y1) + (crossesEmptyRows * (multiplier - 1)) + (crossesEmptyColumns * (multiplier - 1)))
+  ).reduce((acc, cur) => (acc || 0) + cur);
 
 console.log(`Part 1: ${sumOfDistances(allPairings, 2)}`);
 console.log(`Part 2: ${sumOfDistances(allPairings, 1_000_000)}`);
