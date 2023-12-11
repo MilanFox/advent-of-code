@@ -21,10 +21,10 @@ const generatePairings = (galaxies) => {
       const maxY = Math.max(galaxies[i].y, galaxies[j].y);
       const minX = Math.min(galaxies[i].x, galaxies[j].x);
       const maxX = Math.max(galaxies[i].x, galaxies[j].x);
-      const crossesEmptyRows = emptyRows.filter(row => row > minY && row < maxY).length;
-      const crossesEmptyColumns = emptyColumns.filter(col => col > minX && col < maxX).length;
+      const emptySpaceCrossingsY = emptyRows.filter(row => row > minY && row < maxY).length;
+      const emptySpaceCrossingsX = emptyColumns.filter(col => col > minX && col < maxX).length;
 
-      pairings.push([galaxies[i], galaxies[j], crossesEmptyRows + crossesEmptyColumns])
+      pairings.push([galaxies[i], galaxies[j], emptySpaceCrossingsY + emptySpaceCrossingsX])
     }
   }
   return pairings;
