@@ -4,8 +4,8 @@ const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boole
 const galaxy = "#";
 
 const emptyColumns = Array
-  .from({length: inputData[0].length}, (_, x) => x)
-  .filter(x => !inputData.some(row => row[x] === galaxy));
+  .from({length: inputData[0].length}, (_, posX) => posX)
+  .filter(posX => !inputData.some(row => row[posX] === galaxy));
 
 const emptyRows = inputData
   .reduce((acc, cur, index) => !cur.some(cell => cell === galaxy) ? [...acc, index] : acc, []);
