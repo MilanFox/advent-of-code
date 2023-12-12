@@ -39,4 +39,4 @@ const possibleSolutions = inputData.map(([record, condition]) => {
   return matches.length;
 })
 
-console.log(possibleSolutions.reduce((acc, cur) => acc + cur, 0));
+console.log(`Part 1: ${possibleSolutions.reduce((acc, cur) => acc + cur, 0)}`);
