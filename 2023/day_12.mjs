@@ -16,7 +16,7 @@ const findAllSolutions = ([record, condition]) => {
     for (let i = sequence.length; i < record.length; i++) {
       const nextChar = record[i];
       if (nextChar === "?") {
-        if (areAllGroupsValid(sequence + ".", condition)) continueSequence(sequence, ".");
+        if (areAllGroupsValid(sequence, condition)) continueSequence(sequence, ".");
         continueSequence(sequence, "#");
         return;
       }
