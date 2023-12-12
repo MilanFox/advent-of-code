@@ -11,13 +11,20 @@ const isNumberOfGroupsCorrect = ( sequence, condition ) =>
 
 const findAllSolutions = ([record, condition]) => {
   const matches = [];
-  const continueSequence = (sequence = "", nextChar = "") => {
+  const continueSequence = (sequence = "", nextChar = "", currentGroup = -1, currentPos = -1) => {
     if (nextChar) sequence += nextChar;
     for (let i = sequence.length; i < record.length; i++) {
+      if (sequence.at(-1) === ".") currentPos = -1;
+      if (sequence.at(-1) === "#") {
+        currentPos += 1;
+        if (sequence.at(-2) !== "#") currentGroup += 1;
+      }
+      if (currentPos > condition[currentGroup]) return;
+
       const nextChar = record[i];
       if (nextChar === "?") {
-        if (areAllGroupsValid(sequence, condition)) continueSequence(sequence, ".");
-        continueSequence(sequence, "#");
+        if (areAllGroupsValid(sequence, condition)) continueSequence(sequence, ".", currentGroup );
+        continueSequence(sequence, "#", currentGroup, currentPos);
         return;
       }
       sequence += nextChar;
