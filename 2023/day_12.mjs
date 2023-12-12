@@ -3,66 +3,40 @@ import fs from 'fs';
 const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boolean).map(line => line.split(' '));
 inputData.forEach(line => line[1] = line[1].split(',').map(n => parseInt(n, 10)));
 
+const areAllGroupsValid = ( sequence, condition ) => {
+  const groups = sequence.split(/\./g).filter(Boolean);
+  return groups.every((group, index) => group.length === condition[index]);
+}
+
+const isNumberOfGroupsCorrect = ( sequence, condition ) => {
+  const groups = sequence.split(/\./g).filter(Boolean);
+  return groups.length === condition.length;
+}
+
 const possibleSolutions = inputData.map(([record, condition]) => {
-  const forkStack = [];
-  let checkedForks = [];
   const matches = [];
-  let match = [];
-  let i = 0;
 
-  const addMatchToList = () => { matches.push(match.join('')) };
-  const recordChar = ( char ) => { match.push(char) };
-  const defineFork = () => {
-    forkStack.push(i);
-    checkedForks.push(i);
-  };
-  const resetIndexToLastFork = () => {
-    i = forkStack.pop();
-    checkedForks = [i];
-    match.length = i;
-  };
+  /* Note to future Milan: This is the first recursive function you have ever built fully yourself. Nice!*/
+  const continueSequence = (sequence = "", nextChar = "") => {
+    if (nextChar) sequence += nextChar;
 
-  while (true) {
-    if ( i === record.length && forkStack.length === 0 ) {
-      addMatchToList();
-      break;
+    for (let i = sequence.length; i < record.length; i++) {
+      const nextChar = record[i];
+
+      if (nextChar === "?") {
+        if (areAllGroupsValid(sequence + ".", condition)) continueSequence(sequence, ".");
+        continueSequence(sequence, "#");
+        return;
+      }
+
+      sequence += nextChar;
     }
 
-    if (i === record.length) {
-      addMatchToList();
-      resetIndexToLastFork();
-      continue;
-    }
-
-    const char = match[i] || record[i];
-
-    if (char !== "?") {
-      recordChar(char)
-      i += 1;
-
-      continue;
-    }
-
-    if (!checkedForks.includes(i)) {
-      defineFork();
-      recordChar(".");
-    } else {
-      recordChar("#");
-    }
-
-    i += 1;
+    if (areAllGroupsValid(sequence, condition) && isNumberOfGroupsCorrect(sequence, condition)) matches.push(sequence);
   }
 
-  return matches.filter(match => {
-    const groups = match.split(/\./).filter(Boolean);
-    return groups.length === condition.length && groups.every((group, index) => group.length === condition[index])
-  })
-});
+  continueSequence()
+  return matches.length;
+})
 
-const sumOfPossibleSolutions = possibleSolutions
-  .map(solutions => solutions.length)
-  .reduce((acc, cur) => (acc || 0) + cur )
-
-console.log(`Part 1: ${sumOfPossibleSolutions}`);
-
-/* Absolutely no idea for Part 2... Not even going to try the brute forcing. Good bye, gold star streak. */
+console.log(possibleSolutions.reduce((acc, cur) => acc + cur, 0));
