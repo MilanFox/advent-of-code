@@ -13,7 +13,7 @@ const isNumberOfGroupsCorrect = ( sequence, condition ) => {
   return groups.length === condition.length;
 }
 
-const possibleSolutions = inputData.map(([record, condition]) => {
+const findAllSolutions = ([record, condition], index) => {
   const matches = [];
 
   /* Note to future Milan: This is the first recursive function you have ever built fully yourself. Nice!*/
@@ -37,6 +37,17 @@ const possibleSolutions = inputData.map(([record, condition]) => {
 
   continueSequence()
   return matches.length;
-})
+}
 
+const possibleSolutions = inputData.map(findAllSolutions);
 console.log(`Part 1: ${possibleSolutions.reduce((acc, cur) => acc + cur, 0)}`);
+
+const unfoldedData = inputData.map(([record, condition]) => {
+  record = Array.from({ length: 5 }, () => record).join("?");
+  condition = Array.from({ length: 5 }, () => [...condition]).flat();
+  return [record, condition]
+});
+
+/* ToDo: Find solution for part 2 which doesn't run until infinity... */
+const possibleSolutionsForUnfoldedData = unfoldedData.map(findAllSolutions);
+console.log(`Part 2: ${possibleSolutionsForUnfoldedData.reduce((acc, cur) => acc + cur, 0)}`);
