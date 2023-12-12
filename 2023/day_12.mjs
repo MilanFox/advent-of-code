@@ -65,4 +65,4 @@ const sumOfPossibleSolutions = possibleSolutions
 
 console.log(`Part 1: ${sumOfPossibleSolutions}`);
 
-/* Absolutely no idea for Part 2... Not even going to try the brute forcing. So long, gold star streak. */
+/* Absolutely no idea for Part 2... Not even going to try the brute forcing. Good bye, gold star streak. */
