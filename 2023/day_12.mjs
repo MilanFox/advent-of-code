@@ -3,17 +3,15 @@ import fs from 'fs';
 const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boolean).map(line => line.split(' '));
 inputData.forEach(line => line[1] = line[1].split(',').map(n => parseInt(n, 10)));
 
-const areAllGroupsValid = ( sequence, condition ) => {
-  const groups = sequence.split(/\./g).filter(Boolean);
-  return groups.every((group, index) => group.length === condition[index]);
-}
+const areAllGroupsValid = ( sequence, condition ) =>
+  sequence.split(/\./g).filter(Boolean).every((group, index) => group.length === condition[index]);
 
-const isNumberOfGroupsCorrect = ( sequence, condition ) => {
-  const groups = sequence.split(/\./g).filter(Boolean);
-  return groups.length === condition.length;
-}
 
-const findAllSolutions = ([record, condition], index) => {
+const isNumberOfGroupsCorrect = ( sequence, condition ) =>
+  sequence.split(/\./g).filter(Boolean).length === condition.length;
+
+
+const findAllSolutions = ([record, condition]) => {
   const matches = [];
 
   const continueSequence = (sequence = "", nextChar = "") => {
@@ -44,6 +42,7 @@ console.log(`Part 1: ${possibleSolutions.reduce((acc, cur) => acc + cur, 0)}`);
 const unfoldedData = inputData.map(([record, condition]) =>
   [Array.from({ length: 5 }, () => record).join("?"), Array.from({ length: 5 }, () => [...condition]).flat()]
 );
+
 
 /* ToDo: Find solution for part 2 which doesn't run until infinity... */
 const possibleSolutionsForUnfoldedData = unfoldedData.map(findAllSolutions);
