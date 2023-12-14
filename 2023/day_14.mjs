@@ -1,4 +1,5 @@
 import fs from 'fs';
+import crypto from 'crypto';
 
 const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boolean)
 
@@ -18,17 +19,21 @@ const sum = (acc, cur) => (acc || 0) + cur;
 const totalWeightAfterTiltNorth = tilt(inputData, 'north').map(getAllWeights).reduce(sum);
 console.log(`Part 1: ${totalWeightAfterTiltNorth}`);
 
+const patternCache = {};
 const tiltCyclePlatform = (platform, cycles) => {
   let rotatedPlatform = [...platform];
   for (let cycle = 0; cycle < cycles; cycle++) {
-    for (const direction of Object.keys(directionMap)) {
-      rotatedPlatform = tilt(rotatedPlatform, direction)
+    for (const direction of Object.keys(directionMap)) rotatedPlatform = tilt(rotatedPlatform, direction);
+    const patternHash = crypto.createHash('sha256').update(rotatedPlatform.toString()).digest('hex');
+    if (patternCache[patternHash]) {
+      const loopStartingFrom = patternCache[patternHash].cycle;
+      const mod = cycle - loopStartingFrom;
+      return Object.values(patternCache)[loopStartingFrom + ((cycles - loopStartingFrom) % mod) - 1].platform;
     }
+    patternCache[patternHash] = {cycle, platform: [...rotatedPlatform]};
   }
   return rotatedPlatform;
 }
 
-// TODO: Check if this Math is true for only my input or for everybodys...
-const getSmallestCycle = cycle => cycle < 180 ? cycle : ((cycle - 180) % 9) + 180;
-const totalWeightAfterCycling = tiltCyclePlatform(inputData, getSmallestCycle(1_000_000_000)).map(getAllWeights).reduce(sum);
+const totalWeightAfterCycling = tiltCyclePlatform(inputData, 1_000_000_000).map(getAllWeights).reduce(sum);
 console.log(`Part 2: ${totalWeightAfterCycling}`);
