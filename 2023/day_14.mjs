@@ -16,11 +16,10 @@ const tilt = (platform, direction) => rotateClockwise[(360 - directionMap[direct
 const getAllWeights = (row, index) => row.split('').filter(char => char === 'O').length * (row.length - index);
 const sum = (acc, cur) => (acc || 0) + cur;
 
-const totalWeightAfterTiltNorth = tilt(inputData, 'north').map(getAllWeights).reduce(sum);
-console.log(`Part 1: ${totalWeightAfterTiltNorth}`);
+console.log(`Part 1: ${tilt(inputData, 'north').map(getAllWeights).reduce(sum)}`);
 
 const patternCache = {};
-const tiltCyclePlatform = (platform, cycles) => {
+const tiltCycle = (platform, cycles) => {
   let rotatedPlatform = [...platform];
   for (let cycle = 0; cycle < cycles; cycle++) {
     for (const direction of Object.keys(directionMap)) rotatedPlatform = tilt(rotatedPlatform, direction);
@@ -35,5 +34,4 @@ const tiltCyclePlatform = (platform, cycles) => {
   return rotatedPlatform;
 }
 
-const totalWeightAfterCycling = tiltCyclePlatform(inputData, 1_000_000_000).map(getAllWeights).reduce(sum);
-console.log(`Part 2: ${totalWeightAfterCycling}`);
+console.log(`Part 2: ${tiltCycle(inputData, 1_000_000_000).map(getAllWeights).reduce(sum)}`);
