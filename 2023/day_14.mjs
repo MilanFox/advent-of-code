@@ -14,9 +14,9 @@ const turnDegree = { north: 270, east: 180, south: 90, west: 0}
 const tilt = (platform, direction) => rotateClockwise[(360 - turnDegree[direction]) % 360](rotateClockwise[turnDegree[direction]](platform).map(shiftLeft));
 const getAllWeights = (row, index) => row.split('').filter(char => char === 'O').length * (tiltedNorth.length - index);
 const sum = (acc, cur) => (acc || 0) + cur;
+
 const tiltedNorth = tilt(inputData, 'north');
 const totalWeightAfterTiltNorth = tiltedNorth.map(getAllWeights).reduce(sum);
-
 console.log(`Part 1: ${totalWeightAfterTiltNorth}`);
 
 const tiltCyclePlatform = (platform, cycles) => {
@@ -33,5 +33,4 @@ const tiltCyclePlatform = (platform, cycles) => {
 // TODO: Check if this Math is true for only my input or for everybodys...
 const getSmallestCycle = cycle => cycle < 180 ? cycle : ((cycle - 180) % 9) + 180;
 const totalWeightAfterCycling = tiltCyclePlatform(inputData, getSmallestCycle(1_000_000_000)).map(getAllWeights).reduce(sum);
-
 console.log(`Part 2: ${totalWeightAfterCycling}`);
