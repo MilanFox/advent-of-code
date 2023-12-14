@@ -10,9 +10,9 @@ const rotateClockwise = {
   270: (platform) => Array.from({ length: platform[0].length }, (_, i) => platform.map((row) => row[i]).join('')).toReversed(),
 }
 
-const shiftLeft = (line) => line.split('#').map(chunk => chunk.split('').toSorted().toReversed().join('')).join('#');
+const pushRoundRocksLeft = (line) => line.split('#').map(chunk => chunk.split('').toSorted().toReversed().join('')).join('#');
 const directionMap = { north: 270, west: 0, south: 90, east: 180 }
-const tilt = (platform, direction) => rotateClockwise[(360 - directionMap[direction]) % 360](rotateClockwise[directionMap[direction]](platform).map(shiftLeft));
+const tilt = (platform, direction) => rotateClockwise[(360 - directionMap[direction]) % 360](rotateClockwise[directionMap[direction]](platform).map(pushRoundRocksLeft));
 const getAllWeights = (row, index) => row.split('').filter(char => char === 'O').length * (row.length - index);
 const sum = (acc, cur) => (acc || 0) + cur;
 
