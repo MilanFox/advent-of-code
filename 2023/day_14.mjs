@@ -10,8 +10,8 @@ const rotateClockwise = {
 }
 
 const shiftLeft = (line) => line.split('#').map(chunk => chunk.split('').toSorted().toReversed().join('')).join('#');
-const turnDegree = { north: 270, east: 180, south: 90, west: 0}
-const tilt = (platform, direction) => rotateClockwise[(360 - turnDegree[direction]) % 360](rotateClockwise[turnDegree[direction]](platform).map(shiftLeft));
+const directionMap = { north: 270, west: 0, south: 90, east: 180 }
+const tilt = (platform, direction) => rotateClockwise[(360 - directionMap[direction]) % 360](rotateClockwise[directionMap[direction]](platform).map(shiftLeft));
 const getAllWeights = (row, index) => row.split('').filter(char => char === 'O').length * (row.length - index);
 const sum = (acc, cur) => (acc || 0) + cur;
 
@@ -19,10 +19,9 @@ const totalWeightAfterTiltNorth = tilt(inputData, 'north').map(getAllWeights).re
 console.log(`Part 1: ${totalWeightAfterTiltNorth}`);
 
 const tiltCyclePlatform = (platform, cycles) => {
-  const directions = ['north', 'west', 'south', 'east'];
   let rotatedPlatform = [...platform];
   for (let cycle = 0; cycle < cycles; cycle++) {
-    for (const direction of directions) {
+    for (const direction of Object.keys(directionMap)) {
       rotatedPlatform = tilt(rotatedPlatform, direction)
     }
   }
