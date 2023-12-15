@@ -12,7 +12,8 @@ inputData.map(step => {
     const boxIndex = getHash(label);
     const lensIndex = boxes[boxIndex].findIndex(lens => lens[0] === label);
     if (focalLength !== undefined) {
-      lensIndex < 0 ? boxes[boxIndex].push([label, focalLength]) : boxes[boxIndex][lensIndex][1] = focalLength;
+      if (lensIndex < 0) boxes[boxIndex].push([label, focalLength])
+      else boxes[boxIndex][lensIndex][1] = focalLength;
       return;
     }
     lensIndex >= 0 && boxes[boxIndex].splice(lensIndex, 1);
