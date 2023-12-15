@@ -1,12 +1,38 @@
 import fs from 'fs';
 
-const inputData = fs.readFileSync('input.txt', 'utf-8').replaceAll('\n',  '').split(',')
-const sum = (acc, cur) => (acc ||0) + cur;
+const inputData = fs.readFileSync('input.txt', 'utf-8').replaceAll('\n', '').split(',');
+const sum = (acc, cur) => (acc || 0) + cur;
 
-const getHash = ( string ) => {
+const getHash = (string) => {
   let currentValue = 0;
   for (const char of string) currentValue = ((currentValue + char.charCodeAt(0)) * 17) % 256;
   return currentValue;
 }
 
 console.log(`Part 1: ${inputData.map(getHash).reduce(sum)}`);
+
+const boxes = Array.from({length: 256}, () => []);
+const boxCache = {};
+inputData
+  .map(step => step.split(/[=-]/).filter(Boolean))
+  .forEach(([label, focalLength]) => {
+    if (!boxCache[label]) boxCache[label] = getHash(label);
+    const boxIndex = boxCache[label];
+    const lensIndex = boxes[boxIndex].findIndex(lens => lens[0] === (label));
+    if (focalLength !== undefined) {
+      if (lensIndex < 0) boxes[boxIndex].push([label, focalLength])
+      else boxes[boxIndex][lensIndex][1] = focalLength;
+      return;
+    }
+    if (lensIndex >= 0) boxes[boxIndex].splice(lensIndex, 1);
+  });
+
+const focussingPower = boxes
+  .map((box, boxIndex) => {
+    if (!box.length) return;
+    return box.map(([_, focalLength], lensIndex) => (boxIndex + 1) * (lensIndex + 1) * focalLength).reduce(sum);
+  })
+  .filter(Boolean)
+  .reduce(sum);
+
+console.log(`Part 2: ${focussingPower}`);
