@@ -8,18 +8,16 @@ console.log(`Part 1: ${inputData.map(getHash).reduce(sum)}`);
 
 const boxes = Array.from({length: 256}, () => []);
 const boxCache = {};
-inputData
-  .map(step => step.split(/[=-]/).filter(Boolean))
-  .forEach(([label, focalLength]) => {
+inputData.map(step => {
+    const [label, focalLength] = step.split(/[=-]/).filter(Boolean);
     if (!boxCache[label]) boxCache[label] = getHash(label);
     const boxIndex = boxCache[label];
-    const lensIndex = boxes[boxIndex].findIndex(lens => lens[0] === (label));
+    const lensIndex = boxes[boxIndex].findIndex(lens => lens[0] === label);
     if (focalLength !== undefined) {
-      if (lensIndex < 0) boxes[boxIndex].push([label, focalLength])
-      else boxes[boxIndex][lensIndex][1] = focalLength;
+      lensIndex < 0 ? boxes[boxIndex].push([label, focalLength]) : boxes[boxIndex][lensIndex][1] = focalLength;
       return;
     }
-    if (lensIndex >= 0) boxes[boxIndex].splice(lensIndex, 1);
+    lensIndex >= 0 && boxes[boxIndex].splice(lensIndex, 1);
   });
 
 const focussingPower = boxes
