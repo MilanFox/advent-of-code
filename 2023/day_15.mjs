@@ -3,12 +3,7 @@ import fs from 'fs';
 const inputData = fs.readFileSync('input.txt', 'utf-8').replaceAll('\n', '').split(',');
 const sum = (acc, cur) => (acc || 0) + cur;
 
-const getHash = (string) => {
-  let currentValue = 0;
-  for (const char of string) currentValue = ((currentValue + char.charCodeAt(0)) * 17) % 256;
-  return currentValue;
-}
-
+const getHash = (string) => [...string].reduce((acc, cur) => ((acc + cur.charCodeAt(0)) * 17) % 256, 0)
 console.log(`Part 1: ${inputData.map(getHash).reduce(sum)}`);
 
 const boxes = Array.from({length: 256}, () => []);
