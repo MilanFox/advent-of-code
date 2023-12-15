@@ -7,11 +7,9 @@ const getHash = (string) => [...string].reduce((acc, cur) => ((acc + cur.charCod
 console.log(`Part 1: ${inputData.map(getHash).reduce(sum)}`);
 
 const boxes = Array.from({length: 256}, () => []);
-const boxCache = {};
 inputData.map(step => {
     const [label, focalLength] = step.split(/[=-]/).filter(Boolean);
-    if (!boxCache[label]) boxCache[label] = getHash(label);
-    const boxIndex = boxCache[label];
+    const boxIndex = getHash(label);
     const lensIndex = boxes[boxIndex].findIndex(lens => lens[0] === label);
     if (focalLength !== undefined) {
       lensIndex < 0 ? boxes[boxIndex].push([label, focalLength]) : boxes[boxIndex][lensIndex][1] = focalLength;
