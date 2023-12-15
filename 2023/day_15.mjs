@@ -21,10 +21,9 @@ inputData.map(step => {
   });
 
 const focussingPower = boxes
-  .map((box, boxIndex) => {
-    if (!box.length) return;
-    return box.map(([_, focalLength], lensIndex) => (boxIndex + 1) * (lensIndex + 1) * focalLength).reduce(sum);
-  })
+  .map((box, boxIndex) => box.length
+    ? box.map(([_, focalLength], lensIndex) => (boxIndex + 1) * (lensIndex + 1) * focalLength).reduce(sum)
+    : undefined )
   .filter(Boolean)
   .reduce(sum);
 
