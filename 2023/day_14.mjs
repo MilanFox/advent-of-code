@@ -5,8 +5,8 @@ const inputData = fs.readFileSync('input.txt', 'utf-8').split('\n').filter(Boole
 
 const rotateClockwise = {
   0: (platform) => platform,
-  90: (platform) => Array.from({ length: platform[0].length }, (_, i) => platform.map((row) => row[i]).join('').split('').reverse().join('')),
-  180: (platform) => platform.map((row) => row.split('').reverse().join('')).reverse(),
+  90: (platform) => Array.from({ length: platform[0].length }, (_, i) => platform.map((row) => row[i]).join('').split('').toReversed().join('')),
+  180: (platform) => platform.map((row) => row.split('').toReversed().join('')).toReversed(),
   270: (platform) => Array.from({ length: platform[0].length }, (_, i) => platform.map((row) => row[i]).join('')).toReversed(),
 }
 
