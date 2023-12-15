@@ -16,7 +16,7 @@ inputData.map(step => {
       else boxes[boxIndex][lensIndex][1] = focalLength;
       return;
     }
-    lensIndex >= 0 && boxes[boxIndex].splice(lensIndex, 1);
+    if (lensIndex >= 0) boxes[boxIndex].splice(lensIndex, 1);
   });
 
 const focussingPower = boxes
