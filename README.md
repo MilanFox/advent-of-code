@@ -1,7 +1,5 @@
 ![Advent of Code](aoc.png)
 
-# Advent of Code
-
 ## [2023](https://adventofcode.com/2023) ![](https://progress-bar.dev/42?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_01.mjs)
