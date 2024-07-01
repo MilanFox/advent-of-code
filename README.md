@@ -1,5 +1,22 @@
 ![Advent of Code](aoc.png)
 
+Welcome to my Advent of Code repository! This repository contains my solutions to the Advent of Code
+challenges for the years 2022 and 2023, implemented exclusively in JavaScript.
+
+To run the solutions, follow these steps:
+
+1. Provide an `input.txt` file in the same folder as the corresponding `.mjs` file. Note that this
+   input file is not shared in the repository due to Advent of Code's rules.
+2. Use your preferred JavaScript runtime (Node.js, Deno, Bun) to execute the file. All should work
+   without any issues.
+
+Some solutions might create a 2D render called "visualization.txt" which is best viewed in a
+browser, due to their ability to zoom out.
+
+This repository is for educational purposes and to share my approach to solving the Advent of Code
+challenges. Feel free to explore, modify, and use any code you find here for your own learning and
+projects.
+
 ## [2023](https://adventofcode.com/2023) ![](https://progress-bar.dev/42?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_01.mjs)
