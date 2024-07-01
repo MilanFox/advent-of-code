@@ -1,7 +1,7 @@
 ![Advent of Code](aoc.png)
 
 Welcome to my Advent of Code repository! This repository contains my solutions to the Advent of Code
-challenges for the years 2022 and 2023, implemented exclusively in JavaScript.
+challenges, implemented exclusively in JavaScript.
 
 To run the solutions, follow these steps:
 
