@@ -23,4 +23,4 @@ const [oxygenGeneratorRating] = getRating(bitCriteria.MOST_COMMON);
 const [co2ScrubberRating] = getRating(bitCriteria.LEAST_COMMON);
 const lifeSupportRating = parseInt(oxygenGeneratorRating, 2) * parseInt(co2ScrubberRating, 2);
 
-console.log(`Part 2: ${lifeSupportRating}`);
+console.log(`Part 2: ${lifeSupportRating}`); 
