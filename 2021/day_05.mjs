@@ -34,10 +34,8 @@ const getDangerousSpots = () => oceanFloor.flat().filter(cell => cell > 1).lengt
 
 resetOceanFloor();
 lines.filter(line => line.isOrthogonal).forEach(line => line.draw());
-fs.writeFileSync(`visualization.txt`, oceanFloor.map(line => line.join('')).join('\n'), { flag: 'w+' });
 console.log(`Part 1: ${getDangerousSpots()}`);
 
 resetOceanFloor();
 lines.forEach(line => line.draw());
-fs.writeFileSync(`visualization2.txt`, oceanFloor.map(line => line.join('')).join('\n'), { flag: 'w+' });
 console.log(`Part 2: ${getDangerousSpots()}`);
