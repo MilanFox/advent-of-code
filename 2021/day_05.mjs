@@ -5,7 +5,6 @@ class Line {
     const [x, y] = data.split(' -> ');
     [this.x1, this.y1] = x.split(',').map(n => parseInt(n));
     [this.x2, this.y2] = y.split(',').map(n => parseInt(n));
-
     this.isOrthogonal = this.x1 === this.x2 || this.y1 === this.y2;
   }
 
