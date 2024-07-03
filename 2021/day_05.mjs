@@ -5,25 +5,19 @@ class Line {
     const [x, y] = data.split(' -> ');
     [this.x1, this.y1] = x.split(',').map(n => parseInt(n));
     [this.x2, this.y2] = y.split(',').map(n => parseInt(n));
-  }
 
-  get isOrthogonal() {
-    return this.x1 === this.x2 || this.y1 === this.y2;
+    this.isOrthogonal = this.x1 === this.x2 || this.y1 === this.y2;
   }
 
   draw() {
-    const markSpot = ({ x, y }) => {
-      if (oceanFloor[y][x] === '.') oceanFloor[y][x] = 0;
-      oceanFloor[y][x] += 1;
-    };
-
     let yStep = Math.sign(this.y2 - this.y1);
     let xStep = Math.sign(this.x2 - this.x1);
     let y = this.y1;
     let x = this.x1;
 
     while (true) {
-      markSpot({ x, y });
+      if (oceanFloor[y][x] === '.') oceanFloor[y][x] = 0;
+      oceanFloor[y][x] += 1;
       if (x === this.x2 && y === this.y2) break;
       y += yStep;
       x += xStep;
