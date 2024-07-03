@@ -105,14 +105,14 @@ elephants.
 
 </details>
 
-## 🌊 [2021]() ![](https://progress-bar.dev/10?scale=49&suffix=/49⭐)
+## 🌊 [2021]() ![](https://progress-bar.dev/12?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_01.mjs)
 [![](https://img.shields.io/badge/Day_02-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_02.mjs)
 [![](https://img.shields.io/badge/Day_03-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_03.mjs)
 [![](https://img.shields.io/badge/Day_04-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_04.mjs)
 [![](https://img.shields.io/badge/Day_05-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_05.mjs)
-[![](https://img.shields.io/badge/Day_06-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_06.mjs)
+[![](https://img.shields.io/badge/Day_06-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_06.mjs)
 [![](https://img.shields.io/badge/Day_07-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_07.mjs)
 [![](https://img.shields.io/badge/Day_08-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_08.mjs)
 [![](https://img.shields.io/badge/Day_09-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_09.mjs)
