@@ -17,6 +17,8 @@ This repository is for educational purposes and to share my approach to solving 
 challenges. Feel free to explore, modify, and use any code you find here for your own learning and
 projects.
 
+![Advent of Code](divider.png)
+
 ## 🏝️ [2023](https://adventofcode.com/2023) ![](https://progress-bar.dev/42?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_01.mjs)
