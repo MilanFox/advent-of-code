@@ -62,7 +62,7 @@ the source of the issue.
 
 </details>
 
-## 🐘 [2022]() ![](https://progress-bar.dev/31?scale=49&suffix=/49⭐)
+## 🐘 [2022](https://adventofcode.com/2022) ![](https://progress-bar.dev/31?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_01.mjs)
 [![](https://img.shields.io/badge/Day_02-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_02.mjs)
@@ -105,7 +105,7 @@ elephants.
 
 </details>
 
-## 🌊 [2021]() ![](https://progress-bar.dev/12?scale=49&suffix=/49⭐)
+## 🌊 [2021](https://adventofcode.com/2021) ![](https://progress-bar.dev/12?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_01.mjs)
 [![](https://img.shields.io/badge/Day_02-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_02.mjs)
