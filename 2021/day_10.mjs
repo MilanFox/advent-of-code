@@ -14,7 +14,7 @@ class Line {
     while (chunks.length) {
       const openingIndex = chunks.findIndex(instruction => !openingBrackets.includes(instruction)) - 1;
 
-      if (openingIndex === -2) {
+      if (openingIndex < 0) {
         this.isIncomplete = true;
         this.missing = chunks.toReversed().map(instruction => instructionMap[instruction]);
         break;
