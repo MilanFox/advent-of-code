@@ -5,22 +5,17 @@ class Node {
     this.name = name;
     this.height = height;
     this.neighbors = [];
-  }
-
-  get isPeak() {
-    return this.height === 9;
+    if (height === 9) this.isPeak = true;
   }
 }
 
 class Graph {
   constructor(nodes) {
     this.grid = nodes;
+    this.nodes = {};
     nodes.flat().forEach(node => this.addNode(node));
     this.buildGraph();
   }
-
-  nodes = {};
-  grid;
 
   addNode(node) { if (!this.nodes[node.name]) this.nodes[node.name] = node; }
 
@@ -35,6 +30,8 @@ class Graph {
       'south': { offsetX: 0, offsetY: 1 },
       'west': { offsetX: -1, offsetY: 0 },
     };
+
+    const isInBounds = (matrix, { X, Y }) => Y >= 0 && Y < matrix.length && X >= 0 && X < matrix[0].length;
 
     const queue = [[0, 0]];
     const visited = [];
@@ -62,8 +59,6 @@ class Graph {
     return Object.values(this.nodes);
   }
 }
-
-const isInBounds = (matrix, { X, Y }) => Y >= 0 && Y < matrix.length && X >= 0 && X < matrix[0].length;
 
 const nodes = fs
   .readFileSync('input.txt', 'utf-8')
@@ -105,4 +100,3 @@ const visualization = map.grid.map(row => row.map(cell => {
   return ' ';
 }));
 fs.writeFileSync('visualization.txt', visualization.map(line => line.join('')).join('\n'), { flag: 'w+' });
-
