@@ -115,7 +115,7 @@ elephants.
 [![](https://img.shields.io/badge/Day_06-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_06.mjs)
 [![](https://img.shields.io/badge/Day_07-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_07.mjs)
 [![](https://img.shields.io/badge/Day_08-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_08.mjs)
-[![](https://img.shields.io/badge/Day_09-★★-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_09.mjs)
+[![](https://img.shields.io/badge/Day_09-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_09.mjs)
 [![](https://img.shields.io/badge/Day_10-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_10.mjs)
 [![](https://img.shields.io/badge/Day_11-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_11.mjs)
 [![](https://img.shields.io/badge/Day_12-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_12.mjs)
