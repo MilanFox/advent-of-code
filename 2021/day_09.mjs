@@ -14,13 +14,13 @@ class Node {
 
 class Graph {
   constructor(nodes) {
-    this.#grid = nodes;
+    this.grid = nodes;
     nodes.flat().forEach(node => this.addNode(node));
     this.buildGraph();
   }
 
   nodes = {};
-  #grid;
+  grid;
 
   addNode(node) { if (!this.nodes[node.name]) this.nodes[node.name] = node; }
 
@@ -41,7 +41,7 @@ class Graph {
 
     while (queue.length > 0) {
       const [y, x] = queue.shift();
-      const node = this.#grid[y][x];
+      const node = this.grid[y][x];
 
       if (visited.includes(node.name)) continue;
       visited.push(node.name);
@@ -50,8 +50,8 @@ class Graph {
         const X = x + directions[direction].offsetX;
         const Y = y + directions[direction].offsetY;
 
-        if (isInBounds(this.#grid, { X, Y })) {
-          this.addEdge(node, this.#grid[Y][X]);
+        if (isInBounds(this.grid, { X, Y })) {
+          this.addEdge(node, this.grid[Y][X]);
           queue.push([Y, X]);
         }
       }
@@ -96,3 +96,13 @@ const getBasinSize = (lowPoint) => {
 const basins = lowPoints.map(getBasinSize).sort((a, b) => b - a);
 
 console.log(`Part 2: ${basins.slice(0, 3).reduce((acc, cur) => acc * cur, 1)}`);
+
+// Visualize
+lowPoints.forEach(node => node.isLowpoint = true);
+const visualization = map.grid.map(row => row.map(cell => {
+  if (cell.isPeak) return '█';
+  if (cell.isLowpoint) return '○';
+  return ' ';
+}));
+fs.writeFileSync('visualization.txt', visualization.map(line => line.join('')).join('\n'), { flag: 'w+' });
+
