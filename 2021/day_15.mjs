@@ -83,10 +83,17 @@ class Graph {
   }
 }
 
-const inputData = fs.readFileSync('testInput.txt', 'utf-8').trim().split('\n');
+const inputData = fs.readFileSync('input.txt', 'utf-8').trim().split('\n');
 
 const nodes = inputData.map((row, y) => row.split('').map((cell, x) => new Node([x, y], parseInt(cell))));
 const map = new Graph(nodes);
 console.log(`Part 1: ${map.safestPath}`);
 
-
+const allNodes = Array
+  .from({ length: inputData.length * 5 }, (_, i) => Array
+    .from({ length: inputData[0].length * 5 }, (_, j) => (parseInt(inputData[i % inputData.length][j % inputData[0].length]) + Math.floor(i / inputData.length) + Math.floor(j / inputData[0].length)) % 9)
+    .map(n => n === 0 ? 9 : n)
+    .join(''))
+  .map((row, y) => row.split('').map((cell, x) => new Node([x, y], parseInt(cell))));
+const fullMap = new Graph(allNodes);
+console.log(`Part 2: ${fullMap.safestPath}`);
