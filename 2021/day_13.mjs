@@ -16,7 +16,6 @@ class Paper {
     this.#snapshots = [[...this.dots]];
 
     this.instructions.forEach(instruction => this.fold(instruction));
-    this.printCode();
   }
 
   #snapshots;
@@ -41,11 +40,11 @@ class Paper {
     const [xMax, yMax] = dots.reduce(([X, Y], [x, y]) => [Math.max(X, x), Math.max(Y, y)], [0, 0]);
     const matrix = Array.from({ length: yMax + 1 }, () => Array.from({ length: xMax + 1 }, () => ' '));
     dots.forEach(([x, y]) => matrix[y][x] = '█');
-    fs.writeFileSync(`visualization.txt`, matrix.map(line => line.join('')).join('\n'), { flag: 'w+' });
+    return matrix.map(line => line.join('')).join('\n');
   }
 }
 
 const paper = new Paper(fs.readFileSync('input.txt', 'utf-8'));
 
 console.log(`Part 1: ${paper.numberOfDots.at(1)}`);
-console.log(`Part 2: Screen drawn, check 'visualization.txt'!`);
+console.log(`Part 2: \n${paper.printCode()}`);
