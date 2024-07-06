@@ -40,11 +40,11 @@ class Paper {
     const [xMax, yMax] = dots.reduce(([X, Y], [x, y]) => [Math.max(X, x), Math.max(Y, y)], [0, 0]);
     const matrix = Array.from({ length: yMax + 1 }, () => Array.from({ length: xMax + 1 }, () => ' '));
     dots.forEach(([x, y]) => matrix[y][x] = '█');
-    return matrix.map(line => line.join('')).join('\n');
+    return matrix.map(line => line.join('')).join('\n        ');
   }
 }
 
 const paper = new Paper(fs.readFileSync('input.txt', 'utf-8'));
 
 console.log(`Part 1: ${paper.numberOfDots.at(1)}`);
-console.log(`Part 2: \n${paper.printCode()}`);
+console.log(`Part 2: ${paper.printCode()}`);
