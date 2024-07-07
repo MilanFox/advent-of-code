@@ -19,11 +19,12 @@ const pathCache = Array.from({ length: inputData.length }, () => Array.from({ le
 let smallestHeatLoss = Number.MAX_VALUE;
 
 const pushCrucible = ({ x, y, comingFrom, step = 0, heatLoss = 0 }) => {
-  const pathfindingStack = [];
-  pathfindingStack.push({ x, y, comingFrom, step, heatLoss });
+  const priorityQueue = [];
+  priorityQueue.push({ x, y, comingFrom, step, heatLoss });
 
-  while (pathfindingStack.length > 0) {
-    const { x, y, comingFrom, step, heatLoss } = pathfindingStack.pop();
+  while (priorityQueue.length > 0) {
+    priorityQueue.sort((a, b) => a.heatLoss - b.heatLoss);
+    const { x, y, comingFrom, step, heatLoss } = priorityQueue.shift();
 
     if (y < 0 || y >= inputData.length || x < 0 || x >= inputData[0].length) continue;
 
@@ -47,7 +48,7 @@ const pushCrucible = ({ x, y, comingFrom, step = 0, heatLoss = 0 }) => {
 
     allDirections.forEach((dir) => {
       if (!lockedDirection.includes(dir)) {
-        pathfindingStack.push({
+        priorityQueue.push({
           x: x + directions[dir].offsetX,
           y: y + directions[dir].offsetY,
           comingFrom: directions[dir].opposite,
@@ -59,7 +60,5 @@ const pushCrucible = ({ x, y, comingFrom, step = 0, heatLoss = 0 }) => {
   }
 };
 
-pushCrucible({ x: 0, y: 0 }); // Runs ~1min unfortunately
+pushCrucible({ x: 0, y: 0 });
 console.log(`Part 1: ${smallestHeatLoss}`);
-
-
