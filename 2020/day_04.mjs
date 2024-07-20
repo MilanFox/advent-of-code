@@ -13,8 +13,6 @@ class Passport {
     return this.#required.every(key => this[key] !== undefined);
   }
 
-  #validEcl = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'];
-
   #validate = {
     _number: (input, lower, upper) => parseInt(input) >= lower && parseInt(input) <= upper,
     _year: (input, lower, upper) => input.length === 4 && this.#validate._number(input, lower, upper),
@@ -23,12 +21,12 @@ class Passport {
     eyr: (input) => this.#validate._year(input, 2020, 2030),
     hgt: (input) => input.endsWith('in') ? this.#validate._number(input, 59, 76) : input.endsWith('cm') ? this.#validate._number(input, 150, 193) : false,
     hcl: (input) => /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(input),
-    ecl: (input) => this.#validEcl.includes(input),
+    ecl: (input) => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(input),
     pid: (input) => input.length === 9 & Boolean(parseInt(input)),
   };
 
   get isValid() {
-    if (!this.allRequiredFieldPresent) return false;
+    if (!this.allRequired) return false;
     return this.#required.every(field => this.#validate[field](this[field]));
   }
 }
