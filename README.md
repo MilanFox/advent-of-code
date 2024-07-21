@@ -146,3 +146,45 @@ Before you know it, you're inside a submarine, scaning the ocean floor for any t
 | <a href="https://nodejs.org/api/fs.html">fs</a> | Everywhere, to read input from filesystem |
 
 </details>
+
+## ✈️ [2020](https://adventofcode.com/2020) ![](https://progress-bar.dev/16?scale=49&suffix=/49⭐)
+
+[![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_01.mjs)
+[![](https://img.shields.io/badge/Day_02-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_02.mjs)
+[![](https://img.shields.io/badge/Day_03-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_03.mjs)
+[![](https://img.shields.io/badge/Day_04-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_04.mjs)
+[![](https://img.shields.io/badge/Day_05-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_05.mjs)
+[![](https://img.shields.io/badge/Day_06-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_06.mjs)
+[![](https://img.shields.io/badge/Day_07-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_07.mjs)
+[![](https://img.shields.io/badge/Day_08-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_08.mjs)
+[![](https://img.shields.io/badge/Day_09-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_09.mjs)
+[![](https://img.shields.io/badge/Day_10-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_10.mjs)
+[![](https://img.shields.io/badge/Day_11-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_11.mjs)
+[![](https://img.shields.io/badge/Day_12-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_12.mjs)
+[![](https://img.shields.io/badge/Day_13-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_13.mjs)
+[![](https://img.shields.io/badge/Day_14-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_14.mjs)
+[![](https://img.shields.io/badge/Day_15-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_15.mjs)
+[![](https://img.shields.io/badge/Day_16-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_16.mjs)
+[![](https://img.shields.io/badge/Day_17-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_17.mjs)
+[![](https://img.shields.io/badge/Day_18-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_18.mjs)
+[![](https://img.shields.io/badge/Day_19-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_19.mjs)
+[![](https://img.shields.io/badge/Day_20-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_20.mjs)
+[![](https://img.shields.io/badge/Day_21-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_21.mjs)
+[![](https://img.shields.io/badge/Day_22-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_22.mjs)
+[![](https://img.shields.io/badge/Day_23-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_23.mjs)
+[![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_24.mjs)
+[![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_25.mjs)
+
+You've decided to take a vacation at a nice resort on a tropical island. Surely, Christmas will go
+on without you.
+All you need to do is to earn a bit of local currency for the hotel deposit - can't be that hard,
+right?
+
+<details>
+  <summary>Credits / External Libraries</summary>
+
+| Library                                         | Usage                                     |
+  |-------------------------------------------------|-------------------------------------------|
+| <a href="https://nodejs.org/api/fs.html">fs</a> | Everywhere, to read input from filesystem |
+
+</details>
