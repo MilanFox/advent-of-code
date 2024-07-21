@@ -48,16 +48,6 @@ projects.
 [![](https://img.shields.io/badge/Day_24-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_25.mjs)
 
-<details>
-  <summary>Credits / External Libraries</summary>
-
-| Library                                                 | Usage                                                                                                                        |
-  |---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| <a href="https://nodejs.org/api/fs.html">fs</a>         | Everywhere, to read input from filesystem                                                                                    |
-| <a href="https://nodejs.org/api/crypto.html">crypto</a> | On <a href="https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_14.mjs">Day 14</a> to generate hashes for patterns |
-
-</details>
-
 ## 🐘 [2022](https://adventofcode.com/2022) ![](https://progress-bar.dev/31?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_01.mjs)
@@ -85,15 +75,6 @@ projects.
 [![](https://img.shields.io/badge/Day_23-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_23.mjs)
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_25.mjs)
-
-<details>
-  <summary>Credits / External Libraries</summary>
-
-| Library                                         | Usage                                     |
-  |-------------------------------------------------|-------------------------------------------|
-| <a href="https://nodejs.org/api/fs.html">fs</a> | Everywhere, to read input from filesystem |
-
-</details>
 
 ## 🌊 [2021](https://adventofcode.com/2021) ![](https://progress-bar.dev/30?scale=49&suffix=/49⭐)
 
@@ -123,15 +104,6 @@ projects.
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_25.mjs)
 
-<details>
-  <summary>Credits / External Libraries</summary>
-
-| Library                                         | Usage                                     |
-  |-------------------------------------------------|-------------------------------------------|
-| <a href="https://nodejs.org/api/fs.html">fs</a> | Everywhere, to read input from filesystem |
-
-</details>
-
 ## ✈️ [2020](https://adventofcode.com/2020) ![](https://progress-bar.dev/16?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_01.mjs)
@@ -159,13 +131,3 @@ projects.
 [![](https://img.shields.io/badge/Day_23-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_23.mjs)
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_25.mjs)
-
-
-<details>
-  <summary>Credits / External Libraries</summary>
-
-| Library                                         | Usage                                     |
-  |-------------------------------------------------|-------------------------------------------|
-| <a href="https://nodejs.org/api/fs.html">fs</a> | Everywhere, to read input from filesystem |
-
-</details>
