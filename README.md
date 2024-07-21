@@ -1,6 +1,7 @@
 ![Advent of Code](aoc.png)
 
-Welcome to my Advent of Code repository! This repository contains my solutions to the Advent of Code
+Welcome to my "Advent of Code" repository! This repository contains my solutions to the Advent of
+Code
 challenges, implemented exclusively in JavaScript.
 
 To run the solutions, follow these steps:
@@ -47,11 +48,6 @@ projects.
 [![](https://img.shields.io/badge/Day_24-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2023/day_25.mjs)
 
-Something is wrong with global snow production, and you've been selected to take a look.
-The Elves have even given you a map; on it, they've used stars to mark the top fifty locations that
-are likely to be having problems. Embark on a journey that takes you from island to island to find
-the source of the issue.
-
 <details>
   <summary>Credits / External Libraries</summary>
 
@@ -90,12 +86,6 @@ the source of the issue.
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2022/day_25.mjs)
 
-Santa's reindeer typically eat regular reindeer food, but they need a lot of magical energy to
-deliver presents on Christmas. For that, their favorite snack is a special type of star fruit that
-only grows deep in the jungle. The Elves have brought you on their annual expedition to the grove
-where the fruit grows. Along your way you will encounter frightening volcanoes and helpful
-elephants.
-
 <details>
   <summary>Credits / External Libraries</summary>
 
@@ -132,11 +122,6 @@ elephants.
 [![](https://img.shields.io/badge/Day_23-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_23.mjs)
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_25.mjs)
-
-You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see
-if you can help. Apparently, one of the Elves tripped and accidentally sent the sleigh keys flying
-into the ocean!
-Before you know it, you're inside a submarine, scaning the ocean floor for any trace of the keys.
 
 <details>
   <summary>Credits / External Libraries</summary>
@@ -175,10 +160,6 @@ Before you know it, you're inside a submarine, scaning the ocean floor for any t
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_25.mjs)
 
-You've decided to take a vacation at a nice resort on a tropical island. Surely, Christmas will go
-on without you.
-All you need to do is to earn a bit of local currency for the hotel deposit - can't be that hard,
-right?
 
 <details>
   <summary>Credits / External Libraries</summary>
