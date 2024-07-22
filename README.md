@@ -104,7 +104,7 @@ projects.
 [![](https://img.shields.io/badge/Day_24-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_24.mjs)
 [![](https://img.shields.io/badge/Day_25-☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2021/day_25.mjs)
 
-## ✈️ [2020](https://adventofcode.com/2020) ![](https://progress-bar.dev/25?scale=49&suffix=/49⭐)
+## ✈️ [2020](https://adventofcode.com/2020) ![](https://progress-bar.dev/26?scale=49&suffix=/49⭐)
 
 [![](https://img.shields.io/badge/Day_01-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_01.mjs)
 [![](https://img.shields.io/badge/Day_02-★★-gold)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_02.mjs)
@@ -120,7 +120,7 @@ projects.
 [![](https://img.shields.io/badge/Day_12-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_12.mjs)
 [![](https://img.shields.io/badge/Day_13-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_13.mjs)
 [![](https://img.shields.io/badge/Day_14-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_14.mjs)
-[![](https://img.shields.io/badge/Day_15-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_15.mjs)
+[![](https://img.shields.io/badge/Day_15-★☆-silver)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_15.mjs)
 [![](https://img.shields.io/badge/Day_16-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_16.mjs)
 [![](https://img.shields.io/badge/Day_17-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_17.mjs)
 [![](https://img.shields.io/badge/Day_18-☆☆-black)](https://github.com/MilanFox/Advent-of-Code/blob/main/2020/day_18.mjs)
