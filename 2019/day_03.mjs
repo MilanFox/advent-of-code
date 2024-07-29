@@ -20,7 +20,7 @@ class Wire {
       const newY = offsetY * length + y;
       const newX = offsetX * length + x;
 
-      this.lines.push({ x1: x, y1: y, x2: newX, y2: newY });
+      this.lines.push({ x1: x, y1: y, x2: newX, y2: newY, length });
 
       y = newY;
       x = newX;
@@ -51,7 +51,7 @@ const doSegmentsIntersect = (line1, line2) => {
   return null;
 };
 
-const wires = fs.readFileSync('testInput.txt', 'utf-8').trim().split('\n').map(data => new Wire(data));
+const wires = fs.readFileSync('input.txt', 'utf-8').trim().split('\n').map(data => new Wire(data));
 
 const wireIntersections = [];
 
@@ -68,3 +68,42 @@ const closesIntersectionByManhattanDistance = wireIntersections
   .at(0);
 
 console.log(`Part 1: ${closesIntersectionByManhattanDistance}`);
+
+const isPointOnLineSegment = (point, line) => {
+  const { x1, y1, x2, y2 } = line;
+  const { x: px, y: py } = point;
+
+  if (y1 === y2) {
+    if (py === y1 && px >= Math.min(x1, x2) && px <= Math.max(x1, x2)) {
+      return Math.abs(px - x1);
+    }
+  } else
+    if (x1 === x2) {
+      if (px === x1 && py >= Math.min(y1, y2) && py <= Math.max(y1, y2)) {
+        return Math.abs(py - y1);
+      }
+    }
+  return null;
+};
+
+const findSignalStrength = (wire, point) => {
+  let signalStrength = 0;
+
+  for (const line of wire.lines) {
+    const partialLength = isPointOnLineSegment(point, line);
+    if (partialLength === null) signalStrength += line.length; else return signalStrength + partialLength;
+  }
+
+  return null;
+};
+
+wireIntersections.forEach(point => {
+  point.signalStrength = [];
+  wires.forEach((wire, i) => {
+    point.signalStrength[i] = findSignalStrength(wire, point);
+  });
+});
+
+const closestIntersectionBySignalStrength = wireIntersections.map(({ signalStrength }) => signalStrength.reduce((acc, cur) => acc + cur, 0)).sort((a, b) => a - b).at(0);
+
+console.log(`Part 1: ${closestIntersectionBySignalStrength}`);
