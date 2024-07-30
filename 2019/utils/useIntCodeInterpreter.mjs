@@ -7,13 +7,19 @@ function askQuestion(query) {
 }
 
 export class IntCodeComputer {
-  constructor(memory) {
+  constructor(memory, { input } = {}) {
     this.#memory = [...memory];
     this.#pointer = 0;
+    this.#inputQueue = [];
+    this.#outputQueue = [];
+
+    if (input !== undefined) this.#inputQueue = [...input];
   }
 
   #memory;
   #pointer;
+  #inputQueue;
+  #outputQueue;
 
   /**
    * UTILS
@@ -80,16 +86,22 @@ export class IntCodeComputer {
 
   async #input() {
     const targetAddress = this.#getOffsetValue(1);
-    const userInput = await askQuestion('Please Input Number: ');
-    const value = parseInt(userInput);
-    if (Number.isNaN(value)) throw new Error('Only Numbers can be #input');
+
+    let value;
+    if (this.#inputQueue.length) {
+      value = this.#inputQueue.shift();
+    } else {
+      const userInput = await askQuestion('Please Input Number: ');
+      value = parseInt(userInput);
+    }
+
     this.#memory[targetAddress] = value;
     this.#movePointer(2);
   }
 
   #output() {
     const [outputValue] = this.#getParams(1);
-    console.log(outputValue);
+    this.#outputQueue.push(outputValue);
     this.#movePointer(2);
   }
 
@@ -123,6 +135,18 @@ export class IntCodeComputer {
 
   get memory() {
     return this.#memory;
+  }
+
+  get outputQueue() {
+    return this.#outputQueue;
+  }
+
+  get lastOutput() {
+    return this.#outputQueue.at(-1);
+  }
+
+  queueInput(n) {
+    this.#inputQueue.push(n);
   }
 
   async run() {

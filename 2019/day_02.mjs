@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { IntCodeComputer } from './utils/useIntCodeComputer.mjs';
+import { IntCodeComputer } from './utils/useIntCodeInterpreter.mjs';
 
 const inputData = fs.readFileSync('input.txt', 'utf-8').trim().split(',').map(n => parseInt(n));
 
