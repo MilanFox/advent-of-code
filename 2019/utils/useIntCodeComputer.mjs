@@ -50,7 +50,17 @@ export class IntCodeComputer {
    * FUNCTIONS
    */
 
-  #callFunction = [null, this.#add.bind(this), this.#multiply.bind(this), this.#input.bind(this), this.#output.bind(this)];
+  #callFunction = [
+    null,
+    this.#add.bind(this),
+    this.#multiply.bind(this),
+    this.#input.bind(this),
+    this.#output.bind(this),
+    this.#jumpIfTrue.bind(this),
+    this.#jumpIfFalse.bind(this),
+    this.#lessThan.bind(this),
+    this.#equals.bind(this),
+  ];
 
   #add() {
     const numberOfParams = 2;
@@ -78,9 +88,33 @@ export class IntCodeComputer {
   }
 
   #output() {
-    const targetAddress = this.#getOffsetValue(1);
-    console.log(this.#memory[targetAddress]);
+    const [outputValue] = this.#getParams(1);
+    console.log(outputValue);
     this.#movePointer(2);
+  }
+
+  #jumpIfTrue() {
+    const [checkValue, jumpTarget] = this.#getParams(2);
+    if (checkValue !== 0) this.#pointer = jumpTarget; else this.#movePointer(3);
+  }
+
+  #jumpIfFalse() {
+    const [checkValue, jumpTarget] = this.#getParams(2);
+    if (checkValue === 0) this.#pointer = jumpTarget; else this.#movePointer(3);
+  }
+
+  #lessThan() {
+    const [param1, param2] = this.#getParams(2);
+    const targetAddress = this.#getOffsetValue(3);
+    if (param1 < param2) this.#memory[targetAddress] = 1; else this.#memory[targetAddress] = 0;
+    this.#movePointer(4);
+  }
+
+  #equals() {
+    const [param1, param2] = this.#getParams(2);
+    const targetAddress = this.#getOffsetValue(3);
+    if (param1 === param2) this.#memory[targetAddress] = 1; else this.#memory[targetAddress] = 0;
+    this.#movePointer(4);
   }
 
   /**
