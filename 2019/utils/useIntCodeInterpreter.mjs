@@ -53,6 +53,34 @@ export class IntCodeComputer {
   }
 
   /**
+   * EVENTS
+   */
+
+  EVENT_NAMES = Object.freeze({
+    AFTER_OUTPUT: 'afterOutput', AFTER_PAUSE: 'afterPause', AFTER_HALT: 'afterHalt',
+  });
+
+  #events = {};
+
+  on(eventName, cb) {
+    (this.#events[eventName] ??= []).push(cb);
+  };
+
+  #emit(eventName, payload) {
+    this.#events[eventName]?.forEach(f => f(payload));
+  };
+
+  /**
+   * BREAKPOINTS
+   */
+
+  pause() {
+    this.#shouldPause = true;
+  }
+
+  #shouldPause = false;
+
+  /**
    * FUNCTIONS
    */
 
@@ -103,6 +131,7 @@ export class IntCodeComputer {
     const [outputValue] = this.#getParams(1);
     this.#outputQueue.push(outputValue);
     this.#movePointer(2);
+    this.#emit(this.EVENT_NAMES.AFTER_OUTPUT);
   }
 
   #jumpIfTrue() {
@@ -150,11 +179,16 @@ export class IntCodeComputer {
   }
 
   async run() {
+    this.#shouldPause = false;
+
     while (true) {
+      if (this.#shouldPause) break;
       const opCode = this.#currentInstruction;
       if (opCode === 99) break;
       await this.#callFunction[opCode]();
     }
+
+    this.#emit(this.#shouldPause ? this.EVENT_NAMES.AFTER_PAUSE : this.EVENT_NAMES.AFTER_HALT);
 
     ui.close();
   }
