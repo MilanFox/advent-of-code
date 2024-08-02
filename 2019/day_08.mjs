@@ -26,7 +26,7 @@ class Image {
   }
 
   getColorAt({ y, x }) {
-    const colorValue = this.layers.map(layer => layer.data[y][x]).find(pixel => pixel !== 2);
+    const colorValue = this.layers.find(layer => layer.data[y][x] !== 2).data[y][x];
     const colorValueMap = { 0: ' ', 1: '█' };
     return colorValueMap[colorValue];
   }
